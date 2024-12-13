@@ -54,7 +54,8 @@ spec:
     autoscaling:
       minReplicas: 1
       maxReplicas: 3
-      targetCPUUtilizationPercentage: 10
+      metricName: "http_requests_per_second"
+      averageValue: 10
     serviceMonitor:
       enabled: true
       interval: 1s
