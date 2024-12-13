@@ -39,6 +39,7 @@ spec:
     service:
       type: ClusterIP
       port: 80
+      portName: "http"
     ingress:
       enabled: true
       annotations:
@@ -50,3 +51,11 @@ spec:
           paths:
             - path: /
               pathType: ImplementationSpecific
+    autoscaling:
+      minReplicas: 1
+      maxReplicas: 3
+      targetCPUUtilizationPercentage: 10
+    serviceMonitor:
+      enabled: true
+      interval: 1s
+      path: /metrics
